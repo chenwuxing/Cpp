@@ -391,13 +391,12 @@ class tuple<Head,Tail...>
 #### 迭代器的分类
 
 1. input_iterator_tag
-
 1. forward_iterator_tag
 2. bidirectional_iterator_tag
 3. random_access_iterator_tag
 4. output_iterator_tag
 
-###　为什么需要iterator_category
+### 为什么需要iterator_category?
 
 因为算法对容器一无所知，所以需要通过将不同的迭代器种类实现为不同的class的方式传递给算法，通过函数重载的方式处理不同类别的迭代器
 
