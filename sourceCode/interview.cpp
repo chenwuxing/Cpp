@@ -118,19 +118,17 @@ char* strstr(char *str1,char *str2)
 //模拟实现函数memcpy从存储区src复制n个字符到存储区dst
 void* memcpy(void *dest,void *src,size_t num)
 {
-    void *ret = dest;
-    size_t i = 0;
+    char *sDst = (char*)src;
+    char *sSrc = (char*)dest;
     assert(dest != nullptr);
     assert(src != nullptr);
-
-    for(;i < num;i++)
+    while(num--)
     {
-        *(char*)(dest) = *(char*)(src);
-        dest = (char*)(dest) + 1;
-        src = (char*)(src) + 1;
+        *sDst++ = *sSrc++;
 
     }
-    return ret;
+    return dest;
+
 }
 
 // 相当于考虑内存重叠的memcpy函数，从存储区src复制n个字符到存储区dst
