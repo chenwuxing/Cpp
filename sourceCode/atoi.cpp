@@ -1,5 +1,5 @@
 #include<iostream>
-#include<limits>
+#include<limits.h>
 using namespace std;
 
 
@@ -23,30 +23,27 @@ int strToInt(char *str)
         flag = -1;
         str++;
     }
-    if(*str == '+')
+    else if(*str == '+')
     {
         str++;
     }
 
     // 计算数值部分
-    int res = 0;
+    long res = 0;
     while(*str != '\0')
     {
         if(*str >= '0' && *str <= '9')
         {
             res = res * 10 + (*str) - '0';
-            if(res < 0)
+            if(res >= INT_MAX && flag == 1)
             {
-                if(flag == 1)
-                {
-                    res = std::numeric_limits<int>::max();
-                }
-                if(flag == -1)
-                {
-                    res = std::numeric_limits<int>::min();
-                }
                 status = kOverfollow;
-                return res;
+                return INT_MAX;
+            }
+            if(res > INT_MAX && flag == -1)
+            {
+                status = kOverfollow;
+                return INT_MIN;
             }
             str++;
         }
