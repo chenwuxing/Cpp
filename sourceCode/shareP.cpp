@@ -29,6 +29,7 @@ class SmartPointer
          if(--pMeta->count == 0)
             delete pMeta;
          pMeta = other.pMeta;
+         return *this;
       }
       ~SmartPointer()
       {
